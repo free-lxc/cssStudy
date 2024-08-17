@@ -1,0 +1,59 @@
+body {
+  background: #eee;
+}
+.box {
+  height: 800px;
+  width: auto;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: none;
+  .g-animation {
+    width: 400px;
+    background: #42b983;
+    color: #fff;
+    border: 4px solid #333;
+    border-radius: 5px;
+    position: relative;
+    margin: 0 10px;
+    &:nth-child(2) {
+      background: #ff8c00;
+      border-radius: 0;
+    }
+
+    &:nth-child(3) {
+      width: 240px;
+      height: 240px;
+      background: #673ab7;
+      border-radius: 50%;
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+
+  .g-pointer-1,
+  .g-pointer-2 {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 12px;
+    height: 12px;
+    background: #999;
+    border-radius: 50%;
+    background-color: #4caf50;
+    z-index: 2;
+    mix-blend-mode: exclusion;
+    pointer-events: none;
+  }
+  .g-pointer-2 {
+    width: 42px;
+    height: 42px;
+    top: 0;
+    left: 0;
+    background: #fff;
+    transition: 0.15s ease-out;
+    z-index: 1;
+  }
+}
