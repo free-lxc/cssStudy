@@ -8,6 +8,7 @@ import helloWord from "@/components/HelloWorld.vue"
 import Children from "@/components/Children.vue"
 import VueFlowRealize from "@/components/vueFlowRealize/index.vue"
 import JsDff from "@/components/JsDff/index.vue"
+import ParallaxScrolling from "@/components/parallaxScrolling/index.vue"
 const routes = [
   {
     path: "/OutContentVue",
@@ -28,6 +29,10 @@ const routes = [
   {
     path: "/jsDff",
     component: JsDff,
+  },
+  {
+    path: "/parallaxScrolling",
+    component: ParallaxScrolling,
   },
 ]
 
