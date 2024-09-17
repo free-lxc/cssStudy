@@ -12,6 +12,7 @@ import TrafficLight from "@/components/trafficLight/index.vue"
 import ThemeSwitch from "@/components/css_theme_switching/index.vue"
 import PicturePalette from "@/components/picture_palette/index.vue"
 import ScreenWindow from "@/components/screen_window_communication/index.vue"
+import ParallaxScrolling from "@/components/parallaxScrolling/index.vue"
 const routes = [
   {
     path: "/OutContentVue",
@@ -48,6 +49,9 @@ const routes = [
   {
     path: "/screenWindow",
     component: ScreenWindow,
+  },{
+    path: "/parallaxScrolling",
+    component: ParallaxScrolling,
   },
 ]
 
