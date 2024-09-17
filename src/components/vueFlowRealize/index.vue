@@ -2,12 +2,16 @@
   <div class="box" ref="box" @mousemove="pointerMove" @mouseout="pointerOut">
     <div class="content g-animation">
       No one’s born being good at all things. You become good at things through
-      hard work. You’re not a varsity athlete the first time you play a new
-      sport. You don’t hit every note the first time you sing a song.You’ve got
-      to practice. The same principle applies to your schoolwork. You might have
-      to do a math problem a few times before you get it right. You might have
-      to read something a few times before you understand it.You definitely have
-      to do a few drafts of a paper before it’s good enough to hand in.
+      hard work.
+      <div class="text_cut_off">
+        You’re not a varsity athlete the first time you play a new sport. You
+        don’t hit every note the first time you sing a song.You’ve got to
+        practice. The same principle applies to your schoolwork. You might have
+        to do a math problem a few times before you get it right.
+      </div>
+      You might have to read something a few times before you understand it.You
+      definitely have to do a few drafts of a paper before it’s good enough to
+      hand in.
     </div>
     <div class="g-animation">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam officiis
@@ -27,6 +31,7 @@
 <script lang="ts" setup>
 import { ref } from "vue"
 import _ from "lodash"
+import { memoize } from "@/hooks/index.ts"
 const gPointer1 = ref<HTMLDivElement>()
 const gPointer2 = ref<HTMLDivElement>()
 const box = ref<HTMLDivElement>()
@@ -67,6 +72,10 @@ const pointerOut = (e: any) => {
     gPointer2.value!.style.borderRadius = `50%`
   }
 }
+
+const values = memoize((obj: object) => Object.values(obj))
+const obj1 = { a: 1, b: 2, c: 3 }
+console.log(values(obj1))
 </script>
 
 <style lang="less" scoped>

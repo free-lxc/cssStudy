@@ -1,0 +1,32 @@
+.content {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .box {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin: 0 30px;
+    background-color: gray;
+  }
+}
+.content_green {
+  .one {
+    background-color: green;
+  }
+}
+.content_yellow {
+  .two {
+    background-color: yellow;
+  }
+}
+.content_red {
+  .three {
+    background-color: red;
+  }
+}
+.num {
+  font-size: 30px;
+}

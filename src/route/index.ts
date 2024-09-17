@@ -8,13 +8,17 @@ import helloWord from "@/components/HelloWorld.vue"
 import Children from "@/components/Children.vue"
 import VueFlowRealize from "@/components/vueFlowRealize/index.vue"
 import JsDff from "@/components/JsDff/index.vue"
+import TrafficLight from "@/components/trafficLight/index.vue"
+import ThemeSwitch from "@/components/css_theme_switching/index.vue"
+import PicturePalette from "@/components/picture_palette/index.vue"
+import ScreenWindow from "@/components/screen_window_communication/index.vue"
 const routes = [
   {
     path: "/OutContentVue",
     component: OutContentVue,
   },
   {
-    path: "/hello",
+    path: "/",
     component: helloWord,
   },
   {
@@ -22,12 +26,28 @@ const routes = [
     component: Children,
   },
   {
-    path: "/",
+    path: "/vueFlowRealize",
     component: VueFlowRealize,
   },
   {
     path: "/jsDff",
     component: JsDff,
+  },
+  {
+    path: "/trafficLight",
+    component: TrafficLight,
+  },
+  {
+    path: "/themeSwitch",
+    component: ThemeSwitch,
+  },
+  {
+    path: "/picturePalette",
+    component: PicturePalette,
+  },
+  {
+    path: "/screenWindow",
+    component: ScreenWindow,
   },
 ]
 

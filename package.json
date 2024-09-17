@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@types/node": "^22.2.0",
+    "colorthief": "^2.4.0",
     "diff": "^5.2.0",
+    "element-plus": "^2.8.3",
     "lodash": "^4.17.21",
     "sass": "^1.77.8",
     "vue": "^3.4.29",

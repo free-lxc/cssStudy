@@ -2,7 +2,7 @@ body {
   background: #eee;
 }
 .box {
-  height: 800px;
+  height: 100%;
   width: auto;
   border: 1px solid black;
   display: flex;
@@ -30,6 +30,11 @@ body {
       border-radius: 50%;
       font-size: 18px;
       text-align: center;
+    }
+    .text_cut_off {
+      display: inline-block;
+      -webkit-box-decoration-break: slice;
+      box-decoration-break: slice;
     }
   }
 
