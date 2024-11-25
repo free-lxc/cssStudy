@@ -51,6 +51,10 @@ const routerList = [
     name: "窗口通信a",
     path: "/screenWindow?name=A",
   },
+  {
+    name: "编辑器",
+    path: "/editor",
+  },
 ]
 const goTo = (path: string) => {
   router.push(path)

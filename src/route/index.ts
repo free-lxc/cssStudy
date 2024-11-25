@@ -13,6 +13,8 @@ import ThemeSwitch from "@/components/css_theme_switching/index.vue"
 import PicturePalette from "@/components/picture_palette/index.vue"
 import ScreenWindow from "@/components/screen_window_communication/index.vue"
 import ParallaxScrolling from "@/components/parallaxScrolling/index.vue"
+import Editor from "@/components/editor/index.vue"
+import path from "path"
 const routes = [
   {
     path: "/OutContentVue",
@@ -49,9 +51,14 @@ const routes = [
   {
     path: "/screenWindow",
     component: ScreenWindow,
-  },{
+  },
+  {
     path: "/parallaxScrolling",
     component: ParallaxScrolling,
+  },
+  {
+    path: "/editor",
+    component: Editor,
   },
 ]
 
