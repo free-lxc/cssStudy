@@ -14,7 +14,7 @@ import PicturePalette from "@/components/picture_palette/index.vue"
 import ScreenWindow from "@/components/screen_window_communication/index.vue"
 import ParallaxScrolling from "@/components/parallaxScrolling/index.vue"
 import Editor from "@/components/editor/index.vue"
-import path from "path"
+import Graph from "@/components/graph/index.vue"
 const routes = [
   {
     path: "/OutContentVue",
@@ -59,6 +59,10 @@ const routes = [
   {
     path: "/editor",
     component: Editor,
+  },
+  {
+    path: "/graph",
+    component: Graph,
   },
 ]
 

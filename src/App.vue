@@ -55,6 +55,10 @@ const routerList = [
     name: "编辑器",
     path: "/editor",
   },
+  {
+    name: '知识图谱',
+    path: '/graph'
+  }
 ]
 const goTo = (path: string) => {
   router.push(path)

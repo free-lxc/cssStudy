@@ -12,6 +12,7 @@
     "strict": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
+    "noImplicitAny": false,
     //配置 @
     "baseUrl": ".",
     "paths": {
