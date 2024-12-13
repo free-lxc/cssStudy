@@ -10,6 +10,8 @@
     "lint": "eslint \"src/**/*.{js,vue,ts}\" --fix"
   },
   "dependencies": {
+    "@antv/g6": "^4.8.24",
+    "@antv/x6-vue-shape": "^2.1.2",
     "@types/node": "^22.2.0",
     "colorthief": "^2.4.0",
     "diff": "^5.2.0",
