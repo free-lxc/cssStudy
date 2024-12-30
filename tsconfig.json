@@ -10,9 +10,10 @@
   ],
   "compilerOptions": {
     "strict": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noImplicitAny": false,
+    "noUnusedLocals": false, //不检查未使用的变量
+    "noUnusedParameters": false, //不检查未使用的参数
+    "noImplicitAny": false, // 允许any类型
+    "noUnusedVars": false,
     //配置 @
     "baseUrl": ".",
     "paths": {

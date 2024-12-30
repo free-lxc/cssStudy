@@ -2,10 +2,16 @@
   <div class="graph-container">
     <div ref="container" class="graph"></div>
     <div class="controls">
-      <button @click="toggleAnimation" class="control-button">
-        {{ isAnimating ? '暂停' : '开始' }} 动画
+      <button
+        @click="toggleAnimation"
+        class="control-button"
+      >
+        {{ isAnimating ? "暂停" : "开始" }} 动画
       </button>
-      <button @click="resetLayout" class="control-button">
+      <button
+        @click="resetLayout"
+        class="control-button"
+      >
         重置布局
       </button>
     </div>
@@ -13,27 +19,27 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import { Graph } from '@antv/x6'
-import { ForceLayout } from '@antv/layout'
+import { ref, onMounted, onUnmounted } from "vue";
+import { Graph } from "lxOldX6";
+import { ForceLayout } from "lxOldLayout";
 
-const container = ref(null)
-const isAnimating = ref(false)
-let graph = null
-let layout = null
-let animationFrameId = null
+const container = ref(null);
+const isAnimating = ref(false);
+let graph = null;
+let layout = null;
+let animationFrameId = null;
 
 onMounted(() => {
-  initGraph()
-})
+  initGraph();
+});
 
 onUnmounted(() => {
-  cancelAnimationFrame(animationFrameId)
-  layout?.destroy()
-  graph?.dispose()
-})
+  cancelAnimationFrame(animationFrameId);
+  layout?.destroy();
+  graph?.dispose();
+});
 
-function initGraph () {
+function initGraph() {
   graph = new Graph({
     container: container.value,
     width: 800,
@@ -43,54 +49,54 @@ function initGraph () {
     mousewheel: {
       enabled: true,
       zoomAtMousePosition: true,
-      modifiers: 'ctrl',
+      modifiers: "ctrl",
       minScale: 0.5,
       maxScale: 3,
     },
-  })
+  });
 
   const nodes = [
-    { id: 'node1', label: '节点1' },
-    { id: 'node2', label: '节点2' },
-    { id: 'node3', label: '节点3' },
-    { id: 'node4', label: '节点4' },
-    { id: 'node5', label: '节点5' },
-    { id: 'node6', label: '节点6' },
-    { id: 'node7', label: '节点7' },
-    { id: 'node8', label: '节点8' },
-  ]
+    { id: "node1", label: "节点1" },
+    { id: "node2", label: "节点2" },
+    { id: "node3", label: "节点3" },
+    { id: "node4", label: "节点4" },
+    { id: "node5", label: "节点5" },
+    { id: "node6", label: "节点6" },
+    { id: "node7", label: "节点7" },
+    { id: "node8", label: "节点8" },
+  ];
 
   const edges = [
-    { source: 'node1', target: 'node2' },
-    { source: 'node1', target: 'node3' },
-    { source: 'node2', target: 'node4' },
-    { source: 'node3', target: 'node4' },
-    { source: 'node4', target: 'node5' },
-    { source: 'node5', target: 'node6' },
-    { source: 'node6', target: 'node7' },
-    { source: 'node7', target: 'node8' },
-    { source: 'node8', target: 'node1' },
-  ]
+    { source: "node1", target: "node2" },
+    { source: "node1", target: "node3" },
+    { source: "node2", target: "node4" },
+    { source: "node3", target: "node4" },
+    { source: "node4", target: "node5" },
+    { source: "node5", target: "node6" },
+    { source: "node6", target: "node7" },
+    { source: "node7", target: "node8" },
+    { source: "node8", target: "node1" },
+  ];
 
   nodes.forEach((node) => {
     graph.addNode({
       id: node.id,
-      shape: 'circle',
+      shape: "circle",
       width: 60,
       height: 60,
       label: node.label,
       attrs: {
         body: {
-          fill: '#5F95FF',
-          stroke: '#5F95FF',
+          fill: "#5F95FF",
+          stroke: "#5F95FF",
         },
         label: {
-          fill: '#ffffff',
+          fill: "#ffffff",
           fontSize: 12,
         },
       },
-    })
-  })
+    });
+  });
 
   edges.forEach((edge) => {
     graph.addEdge({
@@ -98,12 +104,12 @@ function initGraph () {
       target: edge.target,
       attrs: {
         line: {
-          stroke: '#5F95FF',
+          stroke: "#5F95FF",
           strokeWidth: 2,
         },
       },
-    })
-  })
+    });
+  });
 
   layout = new ForceLayout({
     center: [400, 300],
@@ -116,7 +122,7 @@ function initGraph () {
     maxIteration: 1000,
     animated: true,
     nodeSize: 60,
-  })
+  });
 
   layout.init({
     nodes: graph.getNodes().map((node) => ({
@@ -128,63 +134,67 @@ function initGraph () {
       source: edge.getSourceCellId(),
       target: edge.getTargetCellId(),
     })),
-  })
+  });
 
   // 添加拖拽事件
-  graph.on('node:dragstart', ({ node }) => {
-    node.set('isBeingDragged', true)
-  })
+  graph.on("node:dragstart", ({ node }) => {
+    node.set("isBeingDragged", true);
+  });
 
-  graph.on('node:drag', ({ node }) => {
-    const position = node.getPosition()
-    layout.updateNodePosition(node.id, position)
+  graph.on("node:drag", ({ node }) => {
+    const position = node.getPosition();
+    layout.updateNodePosition(node.id, position);
     if (!isAnimating.value) {
-      layout.execute()
-      updateGraphPositions()
+      layout.execute();
+      updateGraphPositions();
     }
-  })
+  });
 
-  graph.on('node:dragend', ({ node }) => {
-    node.set('isBeingDragged', false)
+  graph.on("node:dragend", ({ node }) => {
+    node.set("isBeingDragged", false);
     if (!isAnimating.value) {
-      layout.execute()
-      updateGraphPositions()
+      layout.execute();
+      updateGraphPositions();
     }
-  })
+  });
 
   // 初始布局
-  resetLayout()
+  // resetLayout()
 }
 
-function updateGraphPositions () {
-  const nodes = graph.getNodes()
+function updateGraphPositions() {
+  const nodes = graph.getNodes();
   nodes.forEach((node) => {
-    const graphNode = graph.getCellById(node.id)
-    console.log("🚀 ~ graphNode:", graphNode)
-    if (graphNode && !graphNode.get('isBeingDragged')) {
-      graphNode.position(node.x, node.y)
+    const graphNode = graph.getCellById(node.id);
+    console.log("🚀 ~ graphNode:", graphNode);
+    if (
+      graphNode &&
+      !graphNode.get("isBeingDragged")
+    ) {
+      graphNode.position(node.x, node.y);
     }
-  })
+  });
 }
 
-function animate () {
-  layout.tick()
-  updateGraphPositions()
-  animationFrameId = requestAnimationFrame(animate)
+function animate() {
+  layout.tick();
+  updateGraphPositions();
+  animationFrameId =
+    requestAnimationFrame(animate);
 }
 
-function toggleAnimation () {
-  isAnimating.value = !isAnimating.value
+function toggleAnimation() {
+  isAnimating.value = !isAnimating.value;
   if (isAnimating.value) {
-    animate()
+    animate();
   } else {
-    cancelAnimationFrame(animationFrameId)
+    cancelAnimationFrame(animationFrameId);
   }
 }
 
-function resetLayout () {
-  layout.execute()
-  updateGraphPositions()
+function resetLayout() {
+  layout.execute();
+  updateGraphPositions();
 }
 </script>
 
@@ -215,7 +225,7 @@ function resetLayout () {
 .control-button {
   padding: 8px 16px;
   font-size: 14px;
-  background-color: #5F95FF;
+  background-color: #5f95ff;
   color: white;
   border: none;
   border-radius: 4px;
